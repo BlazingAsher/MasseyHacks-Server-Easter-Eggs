@@ -1,0 +1,46 @@
+name: MasseyHacksEasterEggs
+version: ${project.version}
+author: David Hui
+main: ca.masseyhacks.servereastereggs.ServerEasterEggs
+api-version: '1.15'
+commands:
+  mheggsreload:
+    description: Reload plugin configuration.
+  mheggsadd:
+    description: Adds an easter egg location.
+  mheggsremove:
+    description: Removes an easter egg location.
+  mheggslist:
+    description: Lists an easter egg location.
+  mheggssave:
+    description: Saves all easter eggs.
+  mheggstoggle:
+    description: Toggles the state of an easter egg location.
+permissions:
+  eastereegs.*:
+    description: Ability to use all commands
+    children:
+      eastereegs.reload: true
+      eastereegs.add: true
+      eastereegs.remove: true
+      eastereegs.list: true
+      eastereegs.save: true
+      eastereggs.toggle: true
+  eastereggs.reload:
+    description: Allows user to reload plugin configuration.
+    default: op
+  eastereggs.add:
+    description: Allows user to add easter egg locations.
+    default: op
+  eastereggs.remove:
+    description: Allows user to remove easter egg locations.
+    default: op
+  eastereggs.list:
+    description: Allows user to list easter egg locations.
+    default: op
+  eastereggs.save:
+    description: Allows user to save list of easter egg locations.
+    default: op
+  eastereggs.toggle:
+    description: Allows user to toggle the state of an easter egg location.
+    default: op
