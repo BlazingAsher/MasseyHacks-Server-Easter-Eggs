@@ -1,6 +1,7 @@
 package ca.masseyhacks.servereastereggs;
 
 import ca.masseyhacks.servereastereggs.commands.*;
+import ca.masseyhacks.servereastereggs.listeners.EasterEggTabCompleter;
 import ca.masseyhacks.servereastereggs.listeners.InteractEventListener;
 import ca.masseyhacks.servereastereggs.util.SEEUtil;
 import org.bukkit.Location;
@@ -37,12 +38,24 @@ public final class ServerEasterEggs extends JavaPlugin {
 
         // Register commands
         getLogger().info("Registering commands.");
-        getCommand("mheggsreload").setExecutor(new Reload(this));
-        getCommand("mheggsadd").setExecutor(new AddLocation(this));
-        getCommand("mheggsremove").setExecutor(new RemoveLocation(this));
-        getCommand("mheggslist").setExecutor(new ListLocations(this));
-        getCommand("mheggssave").setExecutor(new Save(this));
-        getCommand("mheggstoggle").setExecutor(new ToggleLocation(this));
+
+        BaseCommand baseCommand = new BaseCommand(this);
+        getCommand("mheggs").setExecutor(baseCommand);
+        getCommand("mheggs").setTabCompleter(new EasterEggTabCompleter(this, baseCommand));
+
+        baseCommand.registerCommand("reload", new Reload(this));
+        baseCommand.registerCommand("add", new AddLocation(this));
+        baseCommand.registerCommand("remove", new RemoveLocation(this));
+        baseCommand.registerCommand("list", new ListLocations(this));
+        baseCommand.registerCommand("save", new Save(this));
+        baseCommand.registerCommand("toggle", new ToggleLocation(this));
+
+        //getCommand("mheggsreload").setExecutor(new Reload(this));
+        //getCommand("mheggsadd").setExecutor(new AddLocation(this));
+        //getCommand("mheggsremove").setExecutor(new RemoveLocation(this));
+        //getCommand("mheggslist").setExecutor(new ListLocations(this));
+        //getCommand("mheggssave").setExecutor(new Save(this));
+        //getCommand("mheggstoggle").setExecutor(new ToggleLocation(this));
 
         getLogger().info("Registering event handlers.");
         getServer().getPluginManager().registerEvents(new InteractEventListener(this), this);

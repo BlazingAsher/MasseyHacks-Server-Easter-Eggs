@@ -17,6 +17,10 @@ public class ListLocations implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(sender.hasPermission("eastereggs.list")){
+            sender.sendMessage("List of enabled worlds:");
+            for(String worldName : plugin.config.getStringList("listenerEnabledWorlds")){
+                sender.sendMessage(worldName);
+            }
             sender.sendMessage("List of easter eggs:");
             for(Location location : plugin.interactLocations){
                 sender.sendMessage(location.getWorld().getName() + " - " + location.getX() + ", " + location.getY() + ", " + location.getZ() + " - " + SEEUtil.locationClaimed(plugin, location));

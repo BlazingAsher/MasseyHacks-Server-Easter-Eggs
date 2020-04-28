@@ -17,6 +17,7 @@ public class Reload implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(sender.hasPermission("eastereggs.reload")){
             plugin.reloadConfig();
+            plugin.config = plugin.getConfig();
             plugin.interactLocations = SEEUtil.configToLocationList(plugin, plugin.config.getStringList("interactBonusLocations"));
             plugin.interactLocations = Collections.synchronizedList(plugin.interactLocations);
 
