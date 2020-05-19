@@ -57,8 +57,8 @@ public class InteractEventListener implements Listener {
                 block.setType(Material.AIR);
 
                 // Send the player the message
-                player.sendMessage(plugin.config.getString("foundMessage"));
-                player.sendMessage("Message the string below to a team member on Discord to claim your prize! (Click on it to put it into your command bar)");
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.config.getString("foundMessage")));
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.config.getString("claimInstructions")));
 
                 String claimToken = new ClaimToken(plugin.config.getString("claimKey"),
                         player.getUniqueId().toString(),

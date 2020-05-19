@@ -21,7 +21,8 @@ public final class ServerEasterEggs extends JavaPlugin {
         config = this.getConfig();
         config.addDefault("interactBonusLocations", new ArrayList<String>());
         config.addDefault("listenerEnabledWorlds", new ArrayList<String>());
-        config.addDefault("foundMessage", "YOU FOUND IT!");
+        config.addDefault("foundMessage", "&aYOU FOUND IT!");
+        config.addDefault("claimInstructions", "Message the string below to a team member on Discord to claim your prize! (Click on it to put it into your command bar)");
         config.addDefault("claimKey", "1234");
         config.addDefault("foundPrize", 100.0D);
 
